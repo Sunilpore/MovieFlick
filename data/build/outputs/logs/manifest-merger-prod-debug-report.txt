@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml:2:13-83
+INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml:2:13-83
+	package
+		INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml
+	xmlns:android
+		ADDED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml:2:23-81
+uses-sdk
+INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml reason: use-sdk injection requested
+INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml
+INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml
+	android:targetSdkVersion
+		INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml
+	android:minSdkVersion
+		INJECTED from /Users/sunilpore/Documents/Practice/github/MovieFlick/data/build/intermediates/tmp/ProcessLibraryManifest/prod/debug/tempAndroidManifest6144368749397805774.xml

@@ -1,0 +1,36 @@
+package com.movieflick.ui.main
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.movieflick.navigation.Graph
+import com.movieflick.navigation.Page
+import com.movieflick.ui.navigationbar.NavigationBarScreen
+import com.movieflick.utils.preview.composableHorizontalSlide
+
+
+@Composable
+fun MainGraph(
+    mainNavController: NavHostController,
+    darkMode: Boolean,
+    onThemeUpdated: () -> Unit
+) {
+
+    NavHost(
+        navController = mainNavController,
+        startDestination = Page.NavigationBar,
+        route = Graph.Main::class
+    ){
+        composableHorizontalSlide<Page.NavigationBar> { backStack ->
+            val nestedValController = rememberNavController()
+
+
+        }
+
+
+    }
+
+
+}
