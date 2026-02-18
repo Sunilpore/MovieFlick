@@ -44,5 +44,5 @@ kotlin {
 }
 
 dependencies {
-
+    implementation(libs.paging.common.ktx)
 }

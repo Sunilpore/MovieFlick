@@ -1,6 +1,5 @@
 package com.movieflick.ui.theme
 
-
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
@@ -13,6 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+
+
+const val Light = "Light"
+const val Dark = "Dark"
+
 
 private val darkColors = darkColorScheme(
     primary = Color.Black, // Main Primary Color

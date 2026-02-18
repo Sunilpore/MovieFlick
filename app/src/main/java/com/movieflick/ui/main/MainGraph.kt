@@ -9,6 +9,7 @@ import com.movieflick.navigation.Graph
 import com.movieflick.navigation.Page
 import com.movieflick.ui.navigationbar.NavigationBarScreen
 import com.movieflick.utils.preview.composableHorizontalSlide
+import com.movieflick.utils.sharedViewModel
 
 
 @Composable
@@ -26,6 +27,15 @@ fun MainGraph(
         composableHorizontalSlide<Page.NavigationBar> { backStack ->
             val nestedValController = rememberNavController()
 
+            NavigationBarScreen(
+                sharedViewModel = backStack.sharedViewModel(navController = mainNavController),
+                mainRouter = MainRouter(mainNavController),
+                darkMode = darkMode,
+                onThemeUpdated = onThemeUpdated,
+                nestedNavController = nestedValController
+            ){
+
+            }
 
         }
 

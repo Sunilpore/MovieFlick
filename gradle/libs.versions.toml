@@ -8,9 +8,11 @@ junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.1"
-composeBom = "2024.09.00"
+composeBom = "2026.02.00"
 androidLibraryGradlePlugin = "8.13.2"
 composeCompilerGradlePlugin = "2.3.0"
+pagingCommonKtx = "3.4.1"
+pagingCompose = "3.4.1"
 hiltDagger = "2.57.1"
 hilt = "1.3.0"
 navigationCompose = "2.9.5"
@@ -43,6 +45,11 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
+#Paging
+paging-common-ktx = { module = "androidx.paging:paging-common-ktx", version.ref = "pagingCommonKtx" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+
 
 # Hilt
 hilt-dagger-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltDagger" }

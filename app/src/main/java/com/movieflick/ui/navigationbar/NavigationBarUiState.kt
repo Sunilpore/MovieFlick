@@ -1,6 +1,8 @@
 package com.movieflick.ui.navigationbar
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DynamicFeed
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.movieflick.navigation.Page
@@ -20,8 +22,8 @@ sealed class BottomNavigationBarItem(
     val imageVector: ImageVector,
     val page: Page,
 ){
-    data object Feed : BottomNavigationBarItem("Feed", imageVector = Icons.Default.MoreVert, page = Page.Feed)
-    data object MyFavorites : BottomNavigationBarItem("My Favourites", imageVector = Icons.Default.MoreVert, page = Page.Favorites)
+    data object Feed : BottomNavigationBarItem("Feed", imageVector = Icons.Default.DynamicFeed, page = Page.Feed)
+    data object MyFavorites : BottomNavigationBarItem("My Favourites", imageVector = Icons.Default.FavoriteBorder, page = Page.Favorites)
 }
 
 
