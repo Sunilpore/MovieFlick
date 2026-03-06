@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.onEach
 /**
  * @author by Sunil_P on 03/02/2026
  */
-
 fun <T> singleSharedFlow() = MutableSharedFlow<T>(
     replay = 0,
     extraBufferCapacity = 1,

@@ -4,17 +4,26 @@ import android.content.res.Configuration
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.Surface
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.movieflick.di.entities.MovieListItem
+import com.movieflick.navigation.Page
 import com.movieflick.ui.main.MainRouter
+import com.movieflick.ui.navigationbar.NavigationBarSharedViewModel
 import com.movieflick.ui.theme.Dark
 import com.movieflick.ui.theme.Light
 import com.movieflick.ui.widget.LoaderFullScreen
 import com.movieflick.ui.widget.MovieList
+import com.movieflick.ui.widget.PullToRefresh
+import com.movieflick.utils.collectAsEffect
 import com.movieflick.utils.preview.PreviewContainer
 import kotlinx.coroutines.flow.flowOf
 
@@ -22,11 +31,41 @@ import kotlinx.coroutines.flow.flowOf
 @Composable
 fun FeedPage(
     mainRouter: MainRouter,
+    viewModel: FeedViewModel,
+    sharedViewModel: NavigationBarSharedViewModel
 ){
+    val moviesPaging = viewModel.movies.collectAsLazyPagingItems()
+    val uiState by viewModel.uiState.collectAsState()
+    val lazyGridState = rememberLazyGridState()
 
-    /*FeedScreen(
-        movies =
-    )*/
+    viewModel.navigationState.collectAsEffect { navigationState ->
+        when(navigationState){
+            is FeedNavigationState.MovieDetails -> mainRouter.navigateToMovieDetails(navigationState.movieId)
+        }
+    }
+
+    viewModel.refreshListState.collectAsEffect {
+        moviesPaging.refresh()
+    }
+
+    sharedViewModel.bottomItem.collectAsEffect {
+        if(it.page == Page.Feed){
+            lazyGridState.animateScrollToItem(0)
+        }
+    }
+
+    LaunchedEffect(key1 = moviesPaging.loadState) {
+        viewModel.onLoadStateUpdate(moviesPaging.loadState)
+    }
+
+    PullToRefresh(refresh = uiState.showLoading) {
+        FeedScreen(
+            movies = moviesPaging,
+            uiState = uiState,
+            lazyGridState = lazyGridState,
+            onMovieClick = viewModel::onMovieClicked
+        )
+    }
 
 }
 

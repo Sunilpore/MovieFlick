@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 fun PullToRefresh(
     modifier: Modifier = Modifier,
     refresh: Boolean = false,
-    onRefresh: () -> Unit,
+    onRefresh: () -> Unit = {},
     content: @Composable () -> Unit
 ){
 

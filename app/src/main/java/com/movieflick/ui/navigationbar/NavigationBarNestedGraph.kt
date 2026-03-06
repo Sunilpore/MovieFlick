@@ -6,7 +6,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.movieflick.navigation.Page
+import com.movieflick.ui.feed.FeedPage
+import com.movieflick.ui.feed.FeedViewModel
+import com.movieflick.ui.main.MainRouter
 import com.movieflick.utils.preview.composableHorizontalSlide
+import com.movieflick.utils.sharedViewModel
 import kotlin.reflect.KClass
 
 
@@ -23,7 +27,12 @@ fun NavigationBarNestedGraph(
     ){
 
         composableHorizontalSlide<Page.Feed> { backStack ->
-            //val viewModel = hiltViewModel<>()
+            val viewModel = hiltViewModel<FeedViewModel>()
+            FeedPage(
+                mainRouter = MainRouter(mainNavController),
+                viewModel = viewModel,
+                sharedViewModel = backStack.sharedViewModel(navController = mainNavController)
+            )
         }
 
     }

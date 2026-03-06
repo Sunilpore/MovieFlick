@@ -46,5 +46,14 @@ kotlin {
 }
 
 dependencies {
+    api(project(":domain"))
+
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
+    implementation(libs.paging.common.ktx)
+
+    implementation(libs.converter.gson)
 
 }

@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.movieflick.navigation.Graph
 import com.movieflick.navigation.Page
+import com.movieflick.ui.navigationbar.NavigationBarNestedGraph
 import com.movieflick.ui.navigationbar.NavigationBarScreen
 import com.movieflick.utils.preview.composableHorizontalSlide
 import com.movieflick.utils.sharedViewModel
@@ -34,9 +35,12 @@ fun MainGraph(
                 onThemeUpdated = onThemeUpdated,
                 nestedNavController = nestedValController
             ){
-
+                NavigationBarNestedGraph(
+                    navController = nestedValController,
+                    mainNavController = mainNavController,
+                    parentRoute = Graph.Main::class
+                )
             }
-
         }
 
 
