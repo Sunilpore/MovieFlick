@@ -58,7 +58,9 @@ dependencies {
     implementation(libs.hilt.dagger.android)
     implementation(libs.hilt.work)
     //ksp(libs.hilt.dagger.compiler)
-    //ksp(libs.hilt.compiler)
+    //ksp(libs.hilt.compiler
+
+    implementation(libs.androidx.work.runtime.ktx)
 
     //Compose
     implementation(platform(libs.androidx.compose.bom))
