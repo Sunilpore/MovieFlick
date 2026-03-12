@@ -9,8 +9,8 @@ espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.1"
 composeBom = "2026.02.00"
-androidLibraryGradlePlugin = "8.13.2"
-composeCompilerGradlePlugin = "2.3.0"
+kotlinxCoroutinesAndroid = "1.10.2"
+kotlinxSerializationJson = "1.9.0"
 pagingCommonKtx = "3.4.1"
 pagingCompose = "3.4.1"
 work = "2.9.0"
@@ -23,8 +23,11 @@ roomKtx = "2.8.4"
 roomPaging = "2.8.4"
 roomRuntime = "2.8.4"
 retrofit = "3.0.0"
-ksp = "2.1.0-1.0.29"
+ksp = "2.3.5"
 kover = "0.9.2"
+androidLibraryGradlePlugin = "8.13.2"
+composeCompilerGradlePlugin = "2.3.0"
+serializationGradlePlugin = "2.1.0"
 jdk = "21"
 compileSdk = "36"
 minSdk = "24"
@@ -36,6 +39,8 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -81,7 +86,8 @@ androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "androidLibraryGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinGradlePlugin" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationGradlePlugin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "composeCompilerGradlePlugin" }
-hilt = { id = "com.google.dagger.hilt.android" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltGradlePlugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }

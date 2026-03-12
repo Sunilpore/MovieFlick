@@ -10,6 +10,7 @@ import entities.toDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import repository.MovieRepository
+import repository.movie.favorite.FavoriteMoviesDataSource
 
 
 /**
@@ -17,8 +18,10 @@ import repository.MovieRepository
  */
 
 class MovieRepositoryImpl (
+    private val remote: MovieDataSource.Remote,
     private val local: MovieDataSource.Local,
-    private val remoteMediator: MovieRemoteMediator
+    private val remoteMediator: MovieRemoteMediator,
+    private val localFavorite: FavoriteMoviesDataSource.Local
 ): MovieRepository {
 
     @OptIn(ExperimentalPagingApi::class)

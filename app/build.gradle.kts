@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    //alias(libs.plugins.hilt)
+    alias (libs.plugins.serialization)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
 
@@ -57,8 +58,8 @@ dependencies {
     //Hilt
     implementation(libs.hilt.dagger.android)
     implementation(libs.hilt.work)
-    //ksp(libs.hilt.dagger.compiler)
-    //ksp(libs.hilt.compiler
+    ksp(libs.hilt.dagger.compiler)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.work.runtime.ktx)
 
@@ -87,4 +88,7 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
 }
