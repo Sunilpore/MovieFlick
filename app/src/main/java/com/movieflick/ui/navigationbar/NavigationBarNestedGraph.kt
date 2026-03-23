@@ -30,12 +30,11 @@ fun NavigationBarNestedGraph(
 
         composableHorizontalSlide<Page.Feed> { backStack ->
             val viewModel = hiltViewModel<FeedViewModel>()
-            /*FeedPage(
+            FeedPage(
                 mainRouter = MainRouter(mainNavController),
                 viewModel = viewModel,
                 sharedViewModel = backStack.sharedViewModel(navController = mainNavController)
-            )*/
-            DemoUI()
+            )
         }
 
     }

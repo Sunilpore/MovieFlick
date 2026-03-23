@@ -32,11 +32,9 @@ class FeedViewModel @Inject constructor(
     getMoviesWithSeparators: GetMoviesWithSeparators
 ): BaseViewModel() {
 
-    val movies: Flow<PagingData<MovieListItem>> = flowOf(PagingData.from(listOf<MovieListItem>(MovieListItem.Movie(1, "",""))
-    ))
-    /*getMoviesWithSeparators.movies(
+    val movies: Flow<PagingData<MovieListItem>> = getMoviesWithSeparators.movies(
         pageSize = 90
-    ).cachedIn(viewModelScope)*/
+    ).cachedIn(viewModelScope)
 
     private val _uiState: MutableStateFlow<FeedUiState> = MutableStateFlow(FeedUiState())
     val uiState = _uiState.asStateFlow()
