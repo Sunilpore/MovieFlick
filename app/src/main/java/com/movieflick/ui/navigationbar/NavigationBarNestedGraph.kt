@@ -1,6 +1,8 @@
 package com.movieflick.ui.navigationbar
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -28,13 +30,24 @@ fun NavigationBarNestedGraph(
 
         composableHorizontalSlide<Page.Feed> { backStack ->
             val viewModel = hiltViewModel<FeedViewModel>()
-            FeedPage(
+            /*FeedPage(
                 mainRouter = MainRouter(mainNavController),
                 viewModel = viewModel,
                 sharedViewModel = backStack.sharedViewModel(navController = mainNavController)
-            )
+            )*/
+            DemoUI()
         }
 
     }
 
+}
+
+
+
+@Composable
+private fun DemoUI(){
+    Text(
+        text = "Hello Folk, waiting for you...",
+        modifier = Modifier
+    )
 }

@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        /*setContent {
+        setContent {
 
             val navController = rememberNavController()
             var darkMode by remember { mutableStateOf(isDarkModeEnabled()) }
@@ -78,9 +78,9 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
-        }*/
+        }
 
-        setContent {
+        /*setContent {
             MovieFlickTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
-        }
+        }*/
     }
 }
 

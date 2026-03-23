@@ -1,16 +1,25 @@
 package com.movieflick.di.module
 
 import MovieRemoteDataSource
+import android.content.Context
 import api.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import db.favoritemovies.FavoriteMovieDao
+import db.movies.MovieDao
+import db.movies.MovieRemoteKeyDao
 import repository.MovieRepository
 import repository.movie.MovieDataSource
+import repository.movie.MovieLocalDataSource
 import repository.movie.MovieRemoteMediator
 import repository.movie.MovieRepositoryImpl
 import repository.movie.favorite.FavoriteMoviesDataSource
+import repository.movie.favorite.FavoriteMoviesLocalDataSource
+import utils.NetworkMonitor
+import utils.NetworkMonitorImpl
 import javax.inject.Singleton
 
 
@@ -18,8 +27,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DataModule {
 
-
-    /*@Provides
+    @Provides
     @Singleton
     fun provideMovieRepository(
         movieRemote: MovieDataSource.Remote,
@@ -27,22 +35,47 @@ class DataModule {
         movieRemoteMediator: MovieRemoteMediator,
         favoriteLocal: FavoriteMoviesDataSource.Local,
     ): MovieRepository {
-        return MovieRepositoryImpl(movieRemote, movieLocal, movieRemoteMediator, favoriteLocal);
-    }*/
+        return MovieRepositoryImpl(movieRemote, movieLocal, movieRemoteMediator, favoriteLocal)
+    }
 
-    /*@Provides
+    @Provides
     @Singleton
     fun provideMovieRemoveDataSource(movieApi: MovieApi): MovieDataSource.Remote {
         return MovieRemoteDataSource(movieApi)
-    }*/
+    }
 
-    /*@Provides
+    @Provides
+    @Singleton
+    fun provideMovieLocalDataSource(
+        movieDao: MovieDao,
+        movieRemoteKeyDao: MovieRemoteKeyDao,
+    ): MovieDataSource.Local {
+        return MovieLocalDataSource(movieDao, movieRemoteKeyDao)
+    }
+
+    //--------------------------------------------------------------------------------------------//
+
+
+    @Provides
     @Singleton
     fun provideMovieMediator(
         movieLocalDataSource: MovieDataSource.Local,
-        movieRemoteDataSource: MovieRemoteDataSource
+        movieRemoteDataSource: MovieDataSource.Remote
     ): MovieRemoteMediator {
         return MovieRemoteMediator(movieLocalDataSource, movieRemoteDataSource)
-    }*/
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteMovieLocalDataSource(
+        favoriteMovieDao: FavoriteMovieDao
+    ): FavoriteMoviesDataSource.Local {
+        return FavoriteMoviesLocalDataSource(favoriteMovieDao)
+    }
+
+    @Provides
+    fun provideNetworkMonitor(
+        @ApplicationContext context: Context
+    ): NetworkMonitor = NetworkMonitorImpl(context)
 
 }

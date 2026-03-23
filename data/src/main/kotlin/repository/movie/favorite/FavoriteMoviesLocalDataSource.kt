@@ -29,11 +29,11 @@ class FavoriteMoviesLocalDataSource(
     }
 
     override suspend fun removeMovieFromFavorite(movieId: Int) {
-        TODO("Not yet implemented")
+        favoriteMovieDao.remove(movieId)
     }
 
     override suspend fun checkFavoriteStatus(movieId: Int): Result<Boolean> {
-        TODO("Not yet implemented")
+        return Result.Success(favoriteMovieDao.get(movieId) != null)
     }
 
 

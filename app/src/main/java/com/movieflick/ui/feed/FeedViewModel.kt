@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
@@ -31,9 +32,11 @@ class FeedViewModel @Inject constructor(
     getMoviesWithSeparators: GetMoviesWithSeparators
 ): BaseViewModel() {
 
-    val movies: Flow<PagingData<MovieListItem>> = getMoviesWithSeparators.movies(
+    val movies: Flow<PagingData<MovieListItem>> = flowOf(PagingData.from(listOf<MovieListItem>(MovieListItem.Movie(1, "",""))
+    ))
+    /*getMoviesWithSeparators.movies(
         pageSize = 90
-    ).cachedIn(viewModelScope)
+    ).cachedIn(viewModelScope)*/
 
     private val _uiState: MutableStateFlow<FeedUiState> = MutableStateFlow(FeedUiState())
     val uiState = _uiState.asStateFlow()
