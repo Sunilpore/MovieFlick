@@ -18,6 +18,7 @@ import repository.movie.MovieRemoteMediator
 import repository.movie.MovieRepositoryImpl
 import repository.movie.favorite.FavoriteMoviesDataSource
 import repository.movie.favorite.FavoriteMoviesLocalDataSource
+import usecase.GetFavoriteMovies
 import utils.NetworkMonitor
 import utils.NetworkMonitorImpl
 import javax.inject.Singleton
@@ -55,7 +56,6 @@ class DataModule {
 
     //--------------------------------------------------------------------------------------------//
 
-
     @Provides
     @Singleton
     fun provideMovieMediator(
@@ -74,8 +74,17 @@ class DataModule {
     }
 
     @Provides
+    fun provideGetFavoriteMoviesUseCase(movieRepository: MovieRepository): GetFavoriteMovies {
+        return GetFavoriteMovies(movieRepository)
+    }
+
+    //--------------------------------------------------------------------------------------------//
+
+    @Provides
     fun provideNetworkMonitor(
         @ApplicationContext context: Context
     ): NetworkMonitor = NetworkMonitorImpl(context)
+
+    //--------------------------------------------------------------------------------------------//
 
 }

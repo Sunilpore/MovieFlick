@@ -27,8 +27,6 @@ class MovieRepositoryImpl (
     @OptIn(ExperimentalPagingApi::class)
     override fun movies(pageSize: Int): Flow<PagingData<MovieEntity>> {
 
-    LogUtils.d("MovieRepositoryImpl_movies...")
-
     return Pager(
         config = PagingConfig(
             pageSize = pageSize,
@@ -39,7 +37,17 @@ class MovieRepositoryImpl (
     ).flow.map { pagingData ->
         pagingData.map { it.toDomain() }
     }
-
     }
+
+    override fun favoriteMovies(pageSize: Int): Flow<PagingData<MovieEntity>> = Pager (
+        config = PagingConfig(
+            pageSize = pageSize,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { localFavorite.favoriteMovies()}
+    ).flow.map { pagingData ->
+        pagingData.map { it.toDomain() }
+    }
+
 
 }

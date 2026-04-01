@@ -8,6 +8,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.movieflick.navigation.Page
+import com.movieflick.ui.favorites.FavoritesPage
+import com.movieflick.ui.favorites.FavoritesViewModel
 import com.movieflick.ui.feed.FeedPage
 import com.movieflick.ui.feed.FeedViewModel
 import com.movieflick.ui.main.MainRouter
@@ -34,6 +36,14 @@ fun NavigationBarNestedGraph(
                 mainRouter = MainRouter(mainNavController),
                 viewModel = viewModel,
                 sharedViewModel = backStack.sharedViewModel(navController = mainNavController)
+            )
+        }
+
+        composableHorizontalSlide <Page.Favorites> { backstack ->
+            val viewModel = hiltViewModel<FavoritesViewModel>()
+            FavoritesPage(
+                mainRouter = MainRouter(mainNavController),
+                viewModel = viewModel
             )
         }
 

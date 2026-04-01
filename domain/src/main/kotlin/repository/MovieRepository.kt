@@ -11,4 +11,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
     fun movies(pageSize: Int): Flow<PagingData<MovieEntity>>
+    fun favoriteMovies(pageSize: Int): Flow<PagingData<MovieEntity>>
+
 }
