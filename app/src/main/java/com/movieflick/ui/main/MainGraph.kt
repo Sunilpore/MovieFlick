@@ -44,6 +44,11 @@ fun MainGraph(
         }
 
 
+        composableHorizontalSlide<Page.MovieDetails> {
+
+        }
+
+
     }
 
 
