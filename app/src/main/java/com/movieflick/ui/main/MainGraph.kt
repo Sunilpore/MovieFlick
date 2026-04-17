@@ -1,12 +1,15 @@
 package com.movieflick.ui.main
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.movieflick.navigation.Graph
 import com.movieflick.navigation.Page
+import com.movieflick.ui.moviedetails.MovieDetailsPage
+import com.movieflick.ui.moviedetails.MovieDetailsViewModel
 import com.movieflick.ui.navigationbar.NavigationBarNestedGraph
 import com.movieflick.ui.navigationbar.NavigationBarScreen
 import com.movieflick.utils.preview.composableHorizontalSlide
@@ -43,11 +46,13 @@ fun MainGraph(
             }
         }
 
-
         composableHorizontalSlide<Page.MovieDetails> {
-
+            val viewModel = hiltViewModel<MovieDetailsViewModel>()
+            MovieDetailsPage(
+                mainNavController = mainNavController,
+                viewModel = viewModel
+            )
         }
-
 
     }
 

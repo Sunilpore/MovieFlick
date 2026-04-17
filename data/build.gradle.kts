@@ -57,4 +57,6 @@ dependencies {
 
     implementation(libs.converter.gson)
 
+    ksp(libs.room.compiler)
+
 }

@@ -11,6 +11,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import repository.MovieRepository
 import repository.movie.favorite.FavoriteMoviesDataSource
+import utils.Result
+import utils.map
+import utils.onError
+import utils.onSuccess
 
 
 /**
@@ -48,6 +52,30 @@ class MovieRepositoryImpl (
     ).flow.map { pagingData ->
         pagingData.map { it.toDomain() }
     }
+
+    override suspend fun getMovie(movieId: Int): Result<MovieEntity> {
+        return when (val localResult = local.getMovie(movieId)){
+            is Result.Success -> localResult
+            is Result.Error -> remote.getMovie(movieId).map { it.toDomain() }
+        }
+    }
+
+    override suspend fun checkFavoriteStatus(movieId: Int): Result<Boolean> = localFavorite.checkFavoriteStatus(movieId)
+
+    override suspend fun addMovieToFavorite(movieId: Int) {
+        local.getMovie(movieId)
+            .onSuccess {
+                localFavorite.addMovieToFavorite(movieId)
+            }
+            .onError {
+                remote.getMovie(movieId).onSuccess {  movie ->
+                    local.saveMovies(listOf(movie))
+                    localFavorite.addMovieToFavorite(movieId)
+                }
+            }
+    }
+
+    override suspend fun removeMovieFromFavorite(movieId: Int) = localFavorite.removeMovieFromFavorite(movieId)
 
 
 }

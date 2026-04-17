@@ -18,7 +18,11 @@ import repository.movie.MovieRemoteMediator
 import repository.movie.MovieRepositoryImpl
 import repository.movie.favorite.FavoriteMoviesDataSource
 import repository.movie.favorite.FavoriteMoviesLocalDataSource
+import usecase.AddMovieToFavorite
+import usecase.CheckFavoriteStatus
 import usecase.GetFavoriteMovies
+import usecase.GetMovieDetails
+import usecase.RemoveMovieFromFavorite
 import utils.NetworkMonitor
 import utils.NetworkMonitorImpl
 import javax.inject.Singleton
@@ -74,8 +78,28 @@ class DataModule {
     }
 
     @Provides
+    fun provideGetMovieDetailsUseCase(movieRepository: MovieRepository): GetMovieDetails {
+        return GetMovieDetails(movieRepository)
+    }
+
+    @Provides
     fun provideGetFavoriteMoviesUseCase(movieRepository: MovieRepository): GetFavoriteMovies {
         return GetFavoriteMovies(movieRepository)
+    }
+
+    @Provides
+    fun checkFavoriteStatusUseCase(movieRepository: MovieRepository): CheckFavoriteStatus {
+        return CheckFavoriteStatus(movieRepository)
+    }
+
+    @Provides
+    fun provideAddMovieToFavoriteUseCase(movieRepository: MovieRepository): AddMovieToFavorite {
+        return AddMovieToFavorite(movieRepository)
+    }
+
+    @Provides
+    fun provideRemoveMovieFromFavoriteUseCase(movieRepository: MovieRepository): RemoveMovieFromFavorite {
+        return RemoveMovieFromFavorite(movieRepository)
     }
 
     //--------------------------------------------------------------------------------------------//
