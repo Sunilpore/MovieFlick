@@ -2,17 +2,22 @@ package com.movieflick.ui.moviedetails
 
 
 import android.content.res.Configuration
+import android.view.Surface
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
+import androidx.compose.foundation.Canvas
 import com.movieflick.R
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +37,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -157,7 +166,7 @@ private fun MovieItemPlaceHolder(){
 //Preview//
 
 
-@Preview(name = Light)
+/*@Preview(name = Light)
 @Preview(name = Dark, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun MovieItemPlaceHolderPreview(){
@@ -185,6 +194,47 @@ private fun MovieDetailsScreenPreview(){
             appNavController = rememberNavController()
         )
 
+    }
+}*/
+
+
+
+@Composable
+private fun HorizontalSpreadLine(){
+
+    Canvas(
+        modifier = Modifier
+            .width(6.dp)       // max thickness at center
+            .height(140.dp)
+    ) {
+        drawLine(
+            brush = Brush.verticalGradient(
+                colors = listOf(
+                    Color.Transparent,   // top disappears
+                    Color.Blue,          // center visible
+                    Color.Transparent    // bottom disappears
+                )
+            ),
+            start = Offset(size.width / 2, 0f),
+            end = Offset(size.width / 2, size.height),
+            strokeWidth = size.width,
+            cap = StrokeCap.Square      // 🔹 tapering effect
+        )
+    }
+
+
+}
+
+
+@Composable
+@Preview(name = Light)
+@Preview(name = Dark)
+private fun HorizontalSpeadLinePreview(){
+
+    PreviewContainer {
+        Surface {
+            HorizontalSpreadLine()
+        }
     }
 }
 

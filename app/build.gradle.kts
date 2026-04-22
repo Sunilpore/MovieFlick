@@ -58,6 +58,7 @@ dependencies {
     //Hilt
     implementation(libs.hilt.dagger.android)
     implementation(libs.hilt.work)
+    implementation(libs.androidx.constraintlayout.compose)
     ksp(libs.hilt.dagger.compiler)
     ksp(libs.hilt.compiler)
 

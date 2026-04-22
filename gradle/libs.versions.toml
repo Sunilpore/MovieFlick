@@ -33,6 +33,7 @@ serializationGradlePlugin = "2.1.0"
 jdk = "21"
 compileSdk = "36"
 minSdk = "24"
+constraintlayoutCompose = "1.1.1"
 
 
 [libraries]
@@ -91,6 +92,7 @@ hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hilt" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt" }
 
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
+androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
