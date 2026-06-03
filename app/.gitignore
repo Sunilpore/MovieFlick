@@ -6,3 +6,10 @@
 .DS_Store
 
 data/build/*
+
+# Gradle files
+.gradle/
+
+# IntelliJ IDEA files
+.idea/caches/
+.idea/misc.xml
