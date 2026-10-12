@@ -23,6 +23,7 @@ import usecase.CheckFavoriteStatus
 import usecase.GetFavoriteMovies
 import usecase.GetMovieDetails
 import usecase.RemoveMovieFromFavorite
+import usecase.SearchMovies
 import utils.NetworkMonitor
 import utils.NetworkMonitorImpl
 import javax.inject.Singleton
@@ -77,6 +78,11 @@ class DataModule {
         return FavoriteMoviesLocalDataSource(favoriteMovieDao)
     }
 
+
+    @Provides
+    fun provideSearchMoviesUseCase(movieRepository: MovieRepository): SearchMovies {
+        return SearchMovies(movieRepository)
+    }
     @Provides
     fun provideGetMovieDetailsUseCase(movieRepository: MovieRepository): GetMovieDetails {
         return GetMovieDetails(movieRepository)

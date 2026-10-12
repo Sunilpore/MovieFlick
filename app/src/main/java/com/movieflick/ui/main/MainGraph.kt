@@ -12,8 +12,11 @@ import com.movieflick.ui.moviedetails.MovieDetailsPage
 import com.movieflick.ui.moviedetails.MovieDetailsViewModel
 import com.movieflick.ui.navigationbar.NavigationBarNestedGraph
 import com.movieflick.ui.navigationbar.NavigationBarScreen
+import com.movieflick.ui.search.SearchPage
+import com.movieflick.ui.search.SearchViewModel
 import com.movieflick.utils.preview.composableHorizontalSlide
 import com.movieflick.utils.sharedViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 
 @Composable
@@ -44,6 +47,14 @@ fun MainGraph(
                     parentRoute = Graph.Main::class
                 )
             }
+        }
+
+        composableHorizontalSlide<Page.Search> {
+            val viewModel = hiltViewModel<SearchViewModel>()
+            SearchPage(
+                mainNavController = mainNavController,
+                viewModel = viewModel
+            )
         }
 
         composableHorizontalSlide<Page.MovieDetails> {

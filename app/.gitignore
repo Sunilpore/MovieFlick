@@ -9,6 +9,8 @@ data/build/*
 
 # Gradle files
 .gradle/
+**/build/
+**/.gradle/
 
 # IntelliJ IDEA files
 .idea/caches/
